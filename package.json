@@ -36,9 +36,10 @@
   },
   "dependencies": {
     "bulma": "^0.8.0",
+    "konva": "^4.1.0",
     "react": "^16.12.0",
-    "react-canvas": "^1.3.0",
     "react-dom": "^16.12.0",
+    "react-konva": "^16.10.1-0",
     "react-router-dom": "^5.1.2"
   }
 }
