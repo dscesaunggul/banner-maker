@@ -1,23 +1,35 @@
 import * as React from "react";
 import "./form.styl";
 
-const Form: React.SFC<{}> = () => {
-  const [tabIndex, setTabIndex] = React.useState(0);
+type Props = {
+  editable?: boolean;
+};
+
+const Form: React.SFC<Props> = (props: Props) => {
+  const [tabIndex, setTabIndex] = React.useState<number>(0);
+  const onChangeTabIndex = React.useCallback(() => {
+    switch (tabIndex) {
+      case 0:
+        return setTabIndex(1);
+      default:
+        return setTabIndex(0);
+    }
+  }, [tabIndex]);
 
   return (
     <div className="card-form">
       <div className="card card-form__header">
         <div className="card-content">
-          <div className="tabs is-toggle">
+          <div className="tabs is-centered">
             <ul>
               <li className={tabIndex == 0 ? "is-active" : ""}>
-                <a onClick={() => setTabIndex(0)}>
-                  <span>Background</span>
+                <a onClick={onChangeTabIndex}>
+                  <span>Object</span>
                 </a>
               </li>
               <li className={tabIndex == 1 ? "is-active" : ""}>
-                <a onClick={() => setTabIndex(1)}>
-                  <span>+/- Object</span>
+                <a onClick={props.editable ? onChangeTabIndex : undefined}>
+                  <span>Selected Object</span>
                 </a>
               </li>
             </ul>
@@ -25,7 +37,16 @@ const Form: React.SFC<{}> = () => {
         </div>
       </div>
       <div className="card card-form__content">
-        <div className="card-content"></div>
+        <div className="card-content">
+          {(() => {
+            switch (tabIndex) {
+              case 1:
+                return null;
+              default:
+                return null;
+            }
+          })()}
+        </div>
       </div>
     </div>
   );
