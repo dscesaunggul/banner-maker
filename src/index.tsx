@@ -1,11 +1,17 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import 'bulma/css/bulma.css'
+import BackendDrawer from "./pages/backend-drawer";
 
 const Main: React.SFC<{}> = () => (
-  <div>
-    <h1>Hello world ...</h1>
-  </div>
+  <Router>
+    <Switch>
+      <Route exact path="/" >
+          <BackendDrawer/>
+      </Route>
+    </Switch>
+  </Router>
 );
 
 ReactDOM.render(<Main />, document.getElementById("main"));
