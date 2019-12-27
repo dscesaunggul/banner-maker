@@ -1,0 +1,21 @@
+.card-form
+  width 520px
+
+  &__header
+    border-top-left-radius 3px !important
+    border-top-right-radius 3px !important
+    border-bottom-width 0.5
+    border-bottom-color rgba(0, 0, 0, 0.5)
+
+  &__content
+    border-bottom-left-radius 3px !important
+    border-bottom-right-radius 3px !important
+    overflow scroll
+    max-height 680px
+
+@media (max-width: 768px)
+  .card-form
+    width 100% !important
+
+    &__content
+      max-height 340px !important
