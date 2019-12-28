@@ -26,4 +26,4 @@ export const defaultValue: State = {
   editable: false
 };
 
-export const { Provider, Consumer } = React.createContext<State>(defaultValue);
+export const StateContext = React.createContext<State>(defaultValue);
