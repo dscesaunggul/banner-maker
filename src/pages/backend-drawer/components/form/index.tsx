@@ -1,12 +1,10 @@
 import * as React from "react";
+import { StateContext, State as ContextState } from "../../context";
 import "./form.styl";
 
-type Props = {
-  editable?: boolean;
-};
-
-const Form: React.SFC<Props> = (props: Props) => {
+const Form: React.SFC<{}> = () => {
   const [tabIndex, setTabIndex] = React.useState<number>(0);
+  const ctxState: ContextState = React.useContext<ContextState>(StateContext);
   const onChangeTabIndex = React.useCallback(() => {
     switch (tabIndex) {
       case 0:
@@ -28,7 +26,7 @@ const Form: React.SFC<Props> = (props: Props) => {
                 </a>
               </li>
               <li className={tabIndex == 1 ? "is-active" : ""}>
-                <a onClick={props.editable ? onChangeTabIndex : undefined}>
+                <a onClick={ctxState.editable ? onChangeTabIndex : undefined}>
                   <span>Selected Object</span>
                 </a>
               </li>
